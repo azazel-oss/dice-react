@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./RollDice.css";
 import Dice from "./Dice";
 
 class RollDice extends Component {
@@ -14,15 +15,29 @@ class RollDice extends Component {
     this.setState({
       die1: Math.floor(Math.random() * 6) + 1,
       die2: Math.floor(Math.random() * 6) + 1,
+      isRolling: true,
     });
+    setTimeout(() => {
+      this.setState({
+        isRolling: false,
+      });
+    }, 1000);
   }
   render() {
     this.handleDiceRoll = this.handleDiceRoll.bind(this);
     return (
       <div>
-        <Dice value={this.state.die1} />
-        <Dice value={this.state.die2} />
-        <button onClick={this.handleDiceRoll}>Roll Dice</button>
+        <div className="Dices">
+          <Dice value={this.state.die1} rolling={this.state.isRolling} />
+          <Dice value={this.state.die2} rolling={this.state.isRolling} />
+        </div>
+        <button
+          onClick={this.handleDiceRoll}
+          className="btn"
+          disabled={this.state.isRolling}
+        >
+          {this.state.isRolling ? "Rolling..." : "Roll Dice"}
+        </button>
       </div>
     );
   }

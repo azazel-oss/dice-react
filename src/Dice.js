@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Dice.css";
 
 class Dice extends Component {
   render() {
@@ -24,8 +25,12 @@ class Dice extends Component {
         break;
     }
     return (
-      <div>
-        <i className={`fa-solid fa-dice-${diceVal}`}></i>
+      <div key={Math.random()} className="Dice">
+        <i
+          className={`fa-solid fa-dice-${diceVal} ${
+            this.props.rolling && "shake"
+          }`}
+        ></i>
       </div>
     );
   }

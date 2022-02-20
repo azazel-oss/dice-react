@@ -1,0 +1,18 @@
+.Dices {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  width: 15em;
+  padding: 1.5em;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  background-color: black;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: brown;
+}
